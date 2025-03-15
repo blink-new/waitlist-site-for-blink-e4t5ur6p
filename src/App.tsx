@@ -5,7 +5,7 @@ import { HeroSection } from './components/hero-section';
 import { FeaturesSection } from './components/features-section';
 import { FAQSection } from './components/faq-section';
 import { Footer } from './components/footer';
-import { ThemeProvider } from './components/theme-provider';
+import { ThemeProvider } from './lib/theme-provider';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
