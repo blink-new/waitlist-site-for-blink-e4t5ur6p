@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+    
+    --primary: 250 84% 54%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 260 84% 74%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --accent: 280 84% 60%;
+    --accent-foreground: 0 0% 100%;
+    
+    --muted: 223 47% 11%;
+    --muted-foreground: 215 20% 65%;
+    
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 224 71% 4%;
+    
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-secondary to-accent;
+}
+
+.gradient-bg {
+  @apply bg-gradient-to-br from-primary via-secondary to-accent;
+}
+
+.waitlist-card {
+  @apply relative overflow-hidden rounded-xl border border-border bg-muted/50 backdrop-blur-sm;
+}
+
+.waitlist-card::before {
+  content: "";
+  @apply absolute inset-0 gradient-bg opacity-10 -z-10;
+}
+
+.glow {
+  @apply relative;
+}
+
+.glow::after {
+  content: "";
+  @apply absolute -inset-[1px] gradient-bg blur-md opacity-50 -z-10 rounded-xl;
+}
