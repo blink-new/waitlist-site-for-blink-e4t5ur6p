@@ -5,6 +5,7 @@ import { HeroSection } from './components/hero-section';
 import { FeaturesSection } from './components/features-section';
 import { FAQSection } from './components/faq-section';
 import { Footer } from './components/footer';
+import { ThemeProvider } from './components/theme-provider';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,25 +28,27 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Toaster 
-        position="top-center"
-        toastOptions={{
-          style: {
-            background: 'var(--background)',
-            color: 'var(--foreground)',
-            border: '1px solid var(--border)',
-          },
-        }}
-      />
-      <Header />
-      <main className="flex-1">
-        <HeroSection />
-        <FeaturesSection />
-        <FAQSection />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider defaultTheme="system">
+      <div className="min-h-screen flex flex-col">
+        <Toaster 
+          position="top-center"
+          toastOptions={{
+            style: {
+              background: 'var(--background)',
+              color: 'var(--foreground)',
+              border: '1px solid var(--border)',
+            },
+          }}
+        />
+        <Header />
+        <main className="flex-1">
+          <HeroSection />
+          <FeaturesSection />
+          <FAQSection />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 

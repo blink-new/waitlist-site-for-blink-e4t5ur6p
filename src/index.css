@@ -4,26 +4,47 @@
 
 @layer base {
   :root {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
     
-    --primary: 250 84% 54%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
     
-    --secondary: 260 84% 74%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
     
-    --accent: 280 84% 60%;
+    --accent: 221 83% 53%;
     --accent-foreground: 0 0% 100%;
     
-    --muted: 223 47% 11%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
     
-    --border: 216 34% 17%;
-    --input: 216 34% 17%;
-    --ring: 224 71% 4%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
     
     --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
   }
 }
 
@@ -37,21 +58,25 @@
   }
 }
 
+/* Modern Vercel-inspired styles */
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-secondary to-accent;
+  @apply bg-clip-text text-transparent;
+}
+
+.light .gradient-text {
+  @apply bg-gradient-to-r from-blue-600 to-violet-600;
+}
+
+.dark .gradient-text {
+  @apply bg-gradient-to-r from-blue-400 to-violet-400;
 }
 
 .gradient-bg {
-  @apply bg-gradient-to-br from-primary via-secondary to-accent;
+  @apply bg-gradient-to-r from-accent to-violet-500;
 }
 
 .waitlist-card {
-  @apply relative overflow-hidden rounded-xl border border-border bg-muted/50 backdrop-blur-sm;
-}
-
-.waitlist-card::before {
-  content: "";
-  @apply absolute inset-0 gradient-bg opacity-10 -z-10;
+  @apply relative overflow-hidden rounded-xl border border-border bg-background shadow-sm;
 }
 
 .glow {
@@ -60,5 +85,57 @@
 
 .glow::after {
   content: "";
-  @apply absolute -inset-[1px] gradient-bg blur-md opacity-50 -z-10 rounded-xl;
+  @apply absolute -inset-[1px] gradient-bg blur-md opacity-30 -z-10 rounded-xl;
+}
+
+/* Vercel-inspired animations */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease forwards;
+}
+
+/* Dot pattern background */
+.light .dot-pattern {
+  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .dot-pattern {
+  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Noise texture */
+.noise-bg {
+  position: relative;
+}
+
+.noise-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  z-index: -1;
+}
+
+/* Modern button styles */
+.btn-modern {
+  @apply relative overflow-hidden transition-all duration-300;
+}
+
+.btn-modern::before {
+  content: "";
+  @apply absolute inset-0 gradient-bg opacity-0 transition-opacity duration-300;
+}
+
+.btn-modern:hover::before {
+  @apply opacity-100;
 }

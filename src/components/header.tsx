@@ -1,5 +1,6 @@
 import { Github } from "lucide-react";
 import { Button } from "./ui/button";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
   return (
@@ -10,7 +11,8 @@ export function Header() {
           <span className="font-bold text-xl">Blink</span>
         </div>
         
-        <nav>
+        <nav className="flex items-center space-x-2">
+          <ThemeToggle />
           <Button 
             variant="ghost" 
             size="sm"
