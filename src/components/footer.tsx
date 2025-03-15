@@ -1,44 +1,49 @@
-import { Github, Twitter } from "lucide-react";
+import { cn } from "../lib/utils";
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+  
   return (
-    <footer className="py-12 border-t border-border">
-      <div className="container px-4 mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-6 md:mb-0">
-            <div className="flex items-center space-x-2 mb-2">
-              <div className="h-6 w-6 rounded-full bg-accent"></div>
-              <span className="font-bold text-lg">Blink</span>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              The world's #1 AI fullstack engineer
-            </p>
-          </div>
-          
-          <div className="flex space-x-6">
-            <a 
-              href="https://twitter.com/getblink" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Twitter className="h-5 w-5" />
-              <span className="sr-only">Twitter</span>
-            </a>
-            <a 
-              href="https://github.com/getblink" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Github className="h-5 w-5" />
-              <span className="sr-only">GitHub</span>
-            </a>
-          </div>
+    <footer className="border-t border-border/40 bg-background py-8">
+      <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
+        <div className="flex items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-5 w-5"
+          >
+            <path d="M12 5V3" />
+            <path d="M18 12h2" />
+            <path d="M12 21v-2" />
+            <path d="M4 12H2" />
+            <path d="M19.07 4.93l-1.41 1.41" />
+            <path d="M15.66 15.66l1.41 1.41" />
+            <path d="M6.34 6.34L4.93 4.93" />
+            <path d="M8.34 15.66l-1.41 1.41" />
+            <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+          </svg>
+          <span className="text-sm font-medium">Blink</span>
         </div>
         
-        <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Blink. All rights reserved.</p>
+        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+          <a href="#" className="hover:text-foreground">
+            Terms
+          </a>
+          <a href="#" className="hover:text-foreground">
+            Privacy
+          </a>
+          <a href="#" className="hover:text-foreground">
+            Contact
+          </a>
+        </div>
+        
+        <div className="text-sm text-muted-foreground">
+          © {currentYear} Blink. All rights reserved.
         </div>
       </div>
     </footer>
